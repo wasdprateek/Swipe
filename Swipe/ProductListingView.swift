@@ -38,7 +38,7 @@ struct ProductListingView: View {
                 }
             }
             .onAppear {
-//                viewModel.fetchProducts()
+                viewModel.fetchProducts()
             }
             
         }

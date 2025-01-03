@@ -34,12 +34,12 @@ class ProductViewModel: ObservableObject {
             loadProducts()
             loadFavorites()
             startMonitoring()
-        print("hihi")
+//        print("hihi")
 //            syncOfflineProducts()
         }
     
     func fetchProducts() {
-        print("fetching started")
+//        print("fetching started")
         isLoaded = true
         errorMessage = nil
         
@@ -116,25 +116,25 @@ class ProductViewModel: ObservableObject {
                     self.isOnline = path.status == .satisfied
                     if self.isOnline {
                         self.syncOfflineProducts()
-                        print("sync in progres")
+//                        print("sync in progres")
                     }
                 }
             }
             monitor.start(queue: queue)
         }
     private func syncOfflineProducts() {
-        print("try to sync")
+//        print("try to sync")
             guard isOnline else { return }
-        print("Device online")
+//        print("Device online")
             let offlineProducts = loadOfflineProducts()
         print(offlineProducts)
             for product in offlineProducts {
 //                if products.contains(product){continue}
                 print(product)
                 submitProduct(product: product,selectedImage: nil)
-                print("Submitting")
+//                print("Submitting")
             }
-        print("clearing saved data")
+//        print("clearing saved data")
             UserDefaults.standard.removeObject(forKey: offlineProductsKey)
         }
     
@@ -177,7 +177,7 @@ class ProductViewModel: ObservableObject {
             showErrorWithMessage("Product name cannot be empty.")
             return
         }
-        print(103)
+//        print(103)
         
         let priceValue = product.price
         
@@ -196,21 +196,21 @@ class ProductViewModel: ObservableObject {
             showErrorWithMessage("Invalid URL.")
             return
         }
-        print(104)
+//        print(104)
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let boundary = UUID().uuidString
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        print(105)
+//        print(105)
         let httpBody = createFormData(parameters: parameters, image: selectedImage, boundary: boundary)
         request.httpBody = httpBody
-        print(108)
+//        print(108)
         // Perform the request
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 DispatchQueue.main.async {
                     self.showErrorWithMessage("Error: \(error.localizedDescription)")
-                    print(109)
+//                    print(109)
                 }
                 return
             }
@@ -218,7 +218,7 @@ class ProductViewModel: ObservableObject {
             guard let data = data, let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 DispatchQueue.main.async {
                     self.showErrorWithMessage("Failed to add the product.")
-                    print(110)
+//                    print(110)
                 }
                 return
             }
@@ -227,8 +227,8 @@ class ProductViewModel: ObservableObject {
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
                    let success = json["success"] as? Bool {
-                    print("\(success)")
-                    print(111)
+//                    print("\(success)")
+//                    print(111)
                 } else {
                     DispatchQueue.main.async {
                         self.showErrorWithMessage("Failed to parse response.")
@@ -244,7 +244,7 @@ class ProductViewModel: ObservableObject {
 
     func createFormData(parameters: [String: String], image: UIImage?, boundary: String) -> Data {
         var body = Data()
-        print(106)
+//        print(106)
         // Add parameters
         for (key, value) in parameters {
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
@@ -266,7 +266,7 @@ class ProductViewModel: ObservableObject {
         
         // End of form-data
         body.append("--\(boundary)--\r\n".data(using: .utf8)!)
-        print(107)
+//        print(107)
         return body
     }
 
@@ -278,11 +278,11 @@ class ProductViewModel: ObservableObject {
     
     func addProduct(_ product: Product,selectedImage:UIImage?) {
             products.append(product)
-        print("appended 101")
+//        print("appended 101")
             saveProducts()
 
             if isOnline {
-                print(102)
+//                print(102)
                 submitProduct(product: product,selectedImage: selectedImage)
             } else {
                 saveOfflineProduct(product)

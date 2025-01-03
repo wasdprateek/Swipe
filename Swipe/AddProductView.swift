@@ -12,7 +12,7 @@ struct AddProductView: View {
     @ObservedObject var viewModel : ProductViewModel
     @Environment(\.dismiss) private var dismiss
     var completion: (() -> Void)? // Callback closure
-    private let productTypes = ["Product", "Service", "Subscription", "Digital"]
+    private let productTypes = ["Electronics", "Clothing", "Beauty", "Books", "Home & Kitchen", "Toys", "Sports", "Grocery", "Pet Supplies", "Baby Products"]
     private var isFormValid: Bool {
             !productName.isEmpty &&
         ((productType?.isEmpty) != nil) &&
