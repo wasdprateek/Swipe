@@ -11,7 +11,7 @@ import SwiftUI
 struct SwipeApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ProductListingView()
         }
     }
 }

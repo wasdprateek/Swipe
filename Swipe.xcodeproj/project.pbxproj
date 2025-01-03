@@ -75,10 +75,10 @@
 		300BA79A2D00E51300E3D500 = {
 			isa = PBXGroup;
 			children = (
+				300BA7A42D00E51300E3D500 /* Products */,
 				300BA7A52D00E51300E3D500 /* Swipe */,
 				300BA7B62D00E51600E3D500 /* SwipeTests */,
 				300BA7C02D00E51600E3D500 /* SwipeUITests */,
-				300BA7A42D00E51300E3D500 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
