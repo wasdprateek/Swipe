@@ -75,15 +75,12 @@ struct ProductCardView: View {
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 60, height: 60)
                         .cornerRadius(8)
-                } else if phase.error != nil {
+                } else if phase.error == nil {
                     Image(systemName: "photo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 60, height: 60)
                         .foregroundColor(.gray)
-                } else {
-                    ProgressView()
-                        .frame(width: 60, height: 60)
                 }
             }
             
