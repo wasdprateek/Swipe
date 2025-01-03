@@ -226,7 +226,7 @@ class ProductViewModel: ObservableObject {
             // Handle the response
             do {
                 if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
-                   let success = json["success"] as? Bool {
+                   let _ = json["success"] as? Bool {
 //                    print("\(success)")
 //                    print(111)
                 } else {
