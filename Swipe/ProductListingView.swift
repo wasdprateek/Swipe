@@ -24,7 +24,7 @@ struct ProductListingView: View {
                         }
                     }
                 }
-            .navigationTitle("Products")
+            .navigationTitle("Swipe Products")
             .searchable(text: $searchText, prompt: "Search products...")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -92,7 +92,7 @@ struct ProductCardView: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 HStack {
-                    Text("$\(product.price, specifier: "%.2f")")
+                    Text("Rs.\(product.price, specifier: "%.2f")")
                         .font(.subheadline)
                     Text("Tax: \(product.tax)%")
                         .font(.subheadline)
